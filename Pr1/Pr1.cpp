@@ -12,7 +12,6 @@ using namespace std; //Используется для дальнейшего и
 void task1() {
 	cout << "Результат выполнения 2+2*2=" << 2 + 2 * 2 << endl;
 }
-
 void task2() {
 	int z = 3, b = 3.14;
 	double c = 3, d = 3.14;
@@ -213,12 +212,49 @@ void task13() {
 	cout << k<<endl;
 }
 void task14() {
+	bool res = false;
+	int s, l1, l2, r1, r2, x1=NULL, x2=NULL;
+	cin >> s >> l1 >> r1 >> l2 >> r2;
+	for (int i = l1; i <= r1; i++)
+	{
+		for (int j = l2; j <= r2; j++)
+		{
+			if (s==i+j)
+			{
+				if (i < x1 || x1 == NULL) {
+					x1 = i;
+					x2 = j;
+				}
+				res = true;
+				break;
 
+			}
+			
+		}
+	}
+	if (!res) {
+		cout << -1 << endl;
+	}
+	else cout << x1 << endl << x2 << endl;
+	
 }
+/*
 void task15() {
-
+	int n, i, a, min = 1000001;
+	cin >> n;
+	for (i = 0; i < n; i++)
+	{
+		cin >> a;
+		if (a < min)
+		{
+			min = a;
+		}
+		
+	}
+	
+	cout << min << endl;
 }
-
+*/
 
 
 
