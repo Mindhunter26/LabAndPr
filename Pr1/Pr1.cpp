@@ -291,7 +291,7 @@ void task15() {
 		cout << endl;
 	}
 
-	delete[] a;
+	delete[] mas1;
 }
 
 
