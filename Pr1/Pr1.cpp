@@ -12,16 +12,19 @@ using namespace std; //Используется для дальнейшего и
 void task1() {
 	cout << "Результат выполнения 2+2*2=" << 2 + 2 * 2 << endl;
 }
+
 void task2() {
 	int z = 3, b = 3.14;
 	double c = 3, d = 3.14;
 	cout << z << endl << b << endl << c << endl << d << endl; //ИЗ дробной переменной b выводит только целую часть , так как тип переменной integer
 }
+
 void task3() {
 	int e, f;
 	cin >> e >> f;
 	cout << e + f << endl << e - f << endl << e * f << endl << e / f << endl; //Деление выводит только целую часть от получившегося результата т.к. тип перепенных int, если сделать хотя бы одну переменную double , то резульат будет дробным
 }
+
 void task4() {
 	int k, h, j,way;
 	cout << "Выберите способ решения (1 с доп. переменной , 2 без доп. переменной)" << endl;
@@ -47,6 +50,7 @@ void task4() {
 		cout << "Wrong case" << endl;
 	}
 }
+
 void task5() {
 	double x, x0, v0, t, a;
 	cout << "Введите: x0,v0,t" << endl;
@@ -55,6 +59,7 @@ void task5() {
 	cout << x0 + v0 * t + (a*t*t) / 2 << endl;
 	cout << x0 + v0 * t + 1 / 2 * a*t*t << endl; // Неверный ответ так как числа 1 и 2 позиционируются как int и значение выражения 1 / 2 = 0
 }
+
 void task6() {
 	double a,b,c,x1,x2;
 	cout << "Введите коэффициенты" << endl;
@@ -65,6 +70,7 @@ void task6() {
 	cout << "x1="<<x1<<endl<<"x2="<<x2<<endl;
 
 }
+
 void task7() {
 	double a, b, c, x1, x2, x3, y1, y2, y3, p, S;
 	int way;
@@ -88,6 +94,7 @@ void task7() {
 		cout << "Wrong case" << endl;
 	}
 }
+
 void task8() {
 	double a, b, result;
 	char op;
@@ -120,6 +127,7 @@ void task8() {
 		break;
 	}
 }
+
 void task9() {
 	bool checkResult=false;
 	int n,x;
@@ -163,6 +171,7 @@ void task9() {
 			break;
 		}
 }
+
 void task10() {
 	int n, a;
 	cout << "Введите число и степень" << endl;
@@ -177,6 +186,7 @@ void task10() {
 	}
 	cout << n;
 }
+
 void task11() {
 	int n,res=1;
 	cout << "Введите число для нахождения его факториала" << endl;
@@ -186,12 +196,13 @@ void task11() {
 	}
 	cout << res<<endl;
 }
+
 void task12() {
 	int n, i;
 	bool Prime = true;
 	cout << "Введите число "<<endl;
 	cin >> n;
-	for (i = 2; i <= (sqrt(abs(n))); i++) {
+	for (i = 2; i <= (sqrt(n)); i++) {
 		if (n%i == 0) {
 			Prime = false;
 			break;
@@ -203,6 +214,7 @@ void task12() {
 		cout << "Составное" << endl;
 	
 }
+
 void task13() {
 	int n;
 	cin >> n;
@@ -211,6 +223,7 @@ void task13() {
 		k++;
 	cout << k<<endl;
 }
+
 void task14() {
 	bool res = false;
 	int s, l1, l2, r1, r2, x1=NULL, x2=NULL;
@@ -232,29 +245,55 @@ void task14() {
 			
 		}
 	}
-	if (!res) {
+	if (res==false) {
 		cout << -1 << endl;
 	}
 	else cout << x1 << endl << x2 << endl;
 	
 }
-/*
+
 void task15() {
-	int n, i, a, min = 1000001;
+	int n;
 	cin >> n;
-	for (i = 0; i < n; i++)
-	{
-		cin >> a;
-		if (a < min)
-		{
-			min = a;
-		}
-		
+
+	int *mas1 = new int[n];
+
+	for (int i = 0; i < n; i++) {
+		cin >> mas1[i];
 	}
-	
-	cout << min << endl;
+
+	for (int i = 1; i <= n; i++) {
+
+
+		int *mas2 = new int[i];
+
+		for (int j = 0; j < i; j++) {
+			mas2[j] = mas1[j];
+
+		}
+
+		for (int j = 0; j < i; j++) {
+			for (int k = 0; k < i - j - 1; k++) {
+				if (mas2[k] > mas2[k + 1]) {
+					int t = mas2[k + 1];
+					mas2[k + 1] = mas2[k];
+					mas2[k] = t;
+				}
+			}
+		}
+		int s = i;
+		if (s > 5) s = 5;
+		for (int j = s - 1; j >= 0; j--) {
+			cout << mas2[j] << " ";
+		}
+
+		delete[] mas2;
+		cout << endl;
+	}
+
+	delete[] a;
 }
-*/
+
 
 
 
