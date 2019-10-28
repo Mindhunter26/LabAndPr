@@ -223,28 +223,29 @@ void task13() {
 }
 
 void task14() {
-	bool res = false;
-	int s, l1, l2, r1, r2, x1 = 0, x2 = 0;
+	int s;
+	int l1, l2, r1, r2;
+	int x1 = 0, x2 = 0;
+
+	bool found = false;
+	cout << "Введите s, l1, r1, l2, r2" << endl;
 	cin >> s >> l1 >> r1 >> l2 >> r2;
-	for (int i = l1; i <= r1; i++)
-	{
-		for (int j = l2; j <= r2; j++)
-		{
-			if (s == i + j)
-			{
+	for (int i = l1; i <= r1; i++) {
+		for (int j = l2; j <= r2; j++) {
+			if (i + j == s) {
+	
 				x1 = i;
 				x2 = j;
-				res = true;
-				break;
-
+				found = true;
+				break; 
 			}
-			if (res) break;
 		}
+		if (found) break;
 	}
-	if (res == false) {
+	if (!found) {
 		cout << -1 << endl;
 	}
-	else cout << x1 << endl << x2 << endl;
+	else cout << x1 << " " << x2 << endl;
 
 }
 
@@ -290,6 +291,13 @@ void task15() {
 	delete[] mas1;
 }
 
+void factorization(int n) {
+
+}
+//for task16
+void task16() {
+
+}
 
 double BMI(double weight, double height) {
 
@@ -306,18 +314,119 @@ void printBMI(double BMI) {
 void task17() {
 	double w, h;
 	cin >> w >> h;
-	printBMI(BMI(w,h/100));
+	printBMI(BMI(w, h / 100));
 }
 
+void task18() {
+	srand(unsigned(time(0)));
+	int n[20];
+	for (int i = 0; i < 20; i++) {
+		n[i] = (rand() % 201) - 100;
+		cout << n[i] <<endl;
+	}
+	cout << endl;
+	int min = n[1];
+	int max = n[1];
+	for (int i = 1; i < 20; i++) {
+		if (n[i] > max) 
+			max = n[i];
+		if (n[i] < min) 
+			min = n[i];
+	}
+	cout << min << endl;
+	cout << max << endl;
+}
 
+void task19() {
+	int n;
+	cin >> n;
+	int *a = new int[n];
+	int num[10];
+	for (int i = 0; i < n; i++) 
+		cin >> a[i];
+	for (int i = 0; i < 10; i++) 
+		num[i] = 0;
 
+	for (int i = 0; i < n; i++) {
+		num[a[i]]++;
+	}
+
+	for (int i = 0; i < 10; i++) {
+		if (num[i] > 0) {
+			cout << i << ": " << num[i] << endl;
+		}
+	}
+	delete[] a;
+
+}
+
+void bubblik(int *a, int length) {
+	for (int i = 0; i < length; i++) { //сортировка пузырьком
+		for (int j = 0; j < length - i - 1; j++) {
+			if (a[j] > a[j + 1]) {
+				int t = a[j + 1];
+				a[j + 1] = a[j];
+				a[j] = t;
+			}
+		}
+	}
+
+	for (int i = 0; i < length; i++) {
+		cout << a[i] << endl;
+	}
+}
+//for task20
+void task20() { 
+	int n;
+	cin >> n;
+	int *a = new int[n];
+	for (int i = 0; i < n; i++) cin >> a[i];
+	bubblik(a, n);
+}
+
+void task21() {
+	srand(unsigned(time(0)));
+	int Matrix[10][8];
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 8; j++) {
+			Matrix[i][j] = 0;
+		}
+	}
+	int iRand = rand() % 10;
+	int jRand = rand() % 8;
+
+	Matrix[iRand][jRand] = 1;
+
+	bool win = false;
+	int tries = 0;
+	while (!win) {
+		int iGuess, jGuess;
+		cin >> iGuess >> jGuess;
+		if (Matrix[iGuess][jGuess] > 0) {
+			cout << "Вы угадали!" << endl;
+			win = true;
+		}
+		else if (Matrix[iGuess][jGuess] < 0) {
+			cout << "Этот уже проверяли." << endl;
+		}
+		else if (Matrix[iGuess][jGuess] == 0) {
+			cout << "Нет" << endl;
+			Matrix[iGuess][jGuess] = -1;
+			tries++;
+		}
+		if (tries > 5) {
+			cout << "GAME OVER.";
+			break;
+		}
+	}
+}
 
 
 int main()
 {
 	setlocale(LC_ALL, "Russian"); //Устраняет проблемы с выводом на экран русского языка
 	int tasks;
-	cout << "Введите номер задания(1-17)" << endl;
+	cout << "Введите номер задания(1-21)" << endl;
 	cin >> tasks;
 	switch (tasks) {
 	case 1:
@@ -366,9 +475,23 @@ int main()
 		task15();
 		break;
 	case 16:
-		task16(); break;
+		task16(); 
+		break;
 	case 17:
-		task17(); break;
+		task17();
+		break;
+	case 18:
+		task18();
+		break;
+	case 19:
+		task19();
+		break;
+	case 20:
+		task20();
+		break;
+	case 21:
+		task21();
+		break;
 	default:
 		cout << "Неверный номер" << endl;
 	}
