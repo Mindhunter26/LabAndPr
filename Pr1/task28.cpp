@@ -9,7 +9,7 @@ enum Order {
 	ASC,
 	DESC
 };
-bool inOrder(int *arr, int size, Order order) { //проверка упорядоченности для обычного массива интов, а также для трех отдельных чисел 
+bool inOrder(int *arr, int size, Order order) { //проверка упорядоченности для массива и 3 ех чисел 
 	for (int i = 1; i < size; i++) {
 		if (order == ASC) {
 			if (arr[i] >= arr[i - 1]) continue;
@@ -23,7 +23,7 @@ bool inOrder(int *arr, int size, Order order) { //проверка упоряд�
 		}
 	}
 }
-bool inOrder(vector<int> arr, int size, Order order) { //проверка упорядоченности для vector 
+bool inOrder(vector<int> arr, int size, Order order) { //проверка упорядоченности для вектора
 	for (int i = 1; i < size; i++) {
 		if (order == ASC) {
 			if (arr[i] >= arr[i - 1]) continue;
@@ -37,7 +37,7 @@ bool inOrder(vector<int> arr, int size, Order order) { //проверка упо
 		}
 	}
 }
-void BozoSort(int *arr, int size, Order order = ASC) { // Обычный массив интов 
+void BozoSort(int *arr, int size, Order order = ASC) { // сортировка для массива 
 	srand(unsigned(time(0)));
 	while (!inOrder(arr, size, order)) {
 		int s1 = rand() % size;
@@ -54,7 +54,7 @@ void BozoSort(int *arr, int size, Order order = ASC) { // Обычный мас�
 	}
 	cout << endl;
 }
-void BozoSort(vector<int> arr, int size, Order order = ASC) { // std::vector 
+void BozoSort(vector<int> arr, int size, Order order = ASC) { // Сортировка для вектора
 	srand(unsigned(time(0)));
 	while (!inOrder(arr, size, order)) {
 		int s1 = rand() % size;
@@ -71,7 +71,7 @@ void BozoSort(vector<int> arr, int size, Order order = ASC) { // std::vector
 	}
 	cout << endl;
 }
-void BozoSort(int a, int b, int c, Order order = ASC) { // три отдельных числа 
+void BozoSort(int a, int b, int c, Order order = ASC) { // сортировка 3 ех чисел 
 	srand(unsigned(time(0)));
 	int arr[3] = { a,b,c };
 	while (!inOrder(arr, 3, order)) {
