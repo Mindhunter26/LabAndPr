@@ -9,104 +9,111 @@ enum Order {
 	ASC,
 	DESC
 };
-bool inOrder(int *m, int s, Order ord) { //проверка упорядоченности для обычного массива интов, а также для трех отдельных чисел 
-	for (int i = 1; i < s; i++) {
-		if (ord == ASC) {
-			if (m[i] >= m[i - 1]) continue;
-			else return false;
+bool inOrder(int *arr, int size, Order order) { //проверка упорядоченности для обычного массива интов, а также для трех отдельных чисел 
+	for (int i = 1; i < size; i++) {
+		if (order == ASC) {
+			if (arr[i] >= arr[i - 1]) continue;
+			else 
+				return false;
 		}
-		if (ord == DESC) {
-			if (m[i] <= m[i - 1]) continue;
-			else return false;
-		}
-	}
-}
-bool inOrder(vector<int> m, int s, Order ord) { //проверка упорядоченности для vector 
-	for (int i = 1; i < s; i++) {
-		if (ord == ASC) {
-			if (m[i] >= m[i - 1]) continue;
-			else return false;
-		}
-		if (ord == DESC) {
-			if (m[i] <= m[i - 1]) continue;
-			else return false;
+		if (order == DESC) {
+			if (arr[i] <= arr[i - 1]) continue;
+			else 
+				return false;
 		}
 	}
 }
-void BozoSort(int *m, int s, Order ord = ASC) { // Обычный массив интов 
+bool inOrder(vector<int> arr, int size, Order order) { //проверка упорядоченности для vector 
+	for (int i = 1; i < size; i++) {
+		if (order == ASC) {
+			if (arr[i] >= arr[i - 1]) continue;
+			else 
+				return false;
+		}
+		if (order == DESC) {
+			if (arr[i] <= arr[i - 1]) continue;
+			else 
+				return false;
+		}
+	}
+}
+void BozoSort(int *arr, int size, Order order = ASC) { // Обычный массив интов 
 	srand(unsigned(time(0)));
-	while (!inOrder(m, s, ord)) {
-		int s1 = rand() % s;
-		int s2 = rand() % s;
-		if (s1 = s2) s2 /= 2;
+	while (!inOrder(arr, size, order)) {
+		int s1 = rand() % size;
+		int s2 = rand() % size;
+		if (s1 == s2)
+			s2 = s2 / 2;
 
-		int t = m[s2];
-		m[s2] = m[s1];
-		m[s1] = t;
+		int t = arr[s2];
+		arr[s2] = arr[s1];
+		arr[s1] = t;
 	}
-	for (int i = 0; i < s; i++) {
-		cout << m[i] << " ";
+	for (int i = 0; i < size; i++) {
+		cout << arr[i] << " ";
 	}
 	cout << endl;
 }
-void BozoSort(vector<int> m, int s, Order ord = ASC) { // std::vector 
+void BozoSort(vector<int> arr, int size, Order order = ASC) { // std::vector 
 	srand(unsigned(time(0)));
-	while (!inOrder(m, s, ord)) {
-		int s1 = rand() % s;
-		int s2 = rand() % s;
-		if (s1 = s2) s2 /= 2;
+	while (!inOrder(arr, size, order)) {
+		int s1 = rand() % size;
+		int s2 = rand() % size;
+		if (s1 == s2) 
+			s2 = s2 / 2;
 
-		int t = m[s2];
-		m[s2] = m[s1];
-		m[s1] = t;
+		int t = arr[s2];
+		arr[s2] = arr[s1];
+		arr[s1] = t;
 	}
-	for (int i = 0; i < s; i++) {
-		cout << m[i] << " ";
+	for (int i = 0; i < size; i++) {
+		cout << arr[i] << " ";
 	}
 	cout << endl;
 }
-void BozoSort(int a, int b, int c, Order ord = ASC) { // три отдельных числа 
+void BozoSort(int a, int b, int c, Order order = ASC) { // три отдельных числа 
 	srand(unsigned(time(0)));
-	int m[3] = { a,b,c };
-	while (!inOrder(m, 3, ord)) {
+	int arr[3] = { a,b,c };
+	while (!inOrder(arr, 3, order)) {
 		int s1 = rand() % 3;
 		int s2 = rand() % 3;
-		if (s1 = s2) s2 /= 2;
+		if (s1 == s2)
+			s2 = s2 / 2;
 
-		int t = m[s2];
-		m[s2] = m[s1];
-		m[s1] = t;
+		int t = arr[s2];
+		arr[s2] = arr[s1];
+		arr[s1] = t;
 	}
 	for (int i = 0; i < 3; i++) {
-		cout << m[i] << " ";
+		cout << arr[i] << " ";
 	}
 	cout << endl;
 }
 
 int main()
 {
-    int s;
-	cin >> s;
+    int size;
+	cin >> size;
 
-	int *m = new int[s];
-	vector<int> vm(s);
+	int *arr = new int[size];
+	vector<int> Varr(size);
 
-	for (int i = 0; i < s; i++) {
-		cin >> m[i];
-		vm[i] = m[i];
+	for (int i = 0; i < size; i++) {
+		cin >> arr[i];
+		Varr[i] = arr[i];
 	}
 
 	cout << endl;
 
-	BozoSort(m, s);
-	BozoSort(m, s, DESC);
+	BozoSort(arr, size);
+	BozoSort(arr, size, DESC);
 	cout << endl;
-	BozoSort(vm, s);
-	BozoSort(vm, s, DESC);
+	BozoSort(Varr, size);
+	BozoSort(Varr, size, DESC);
 	cout << endl;
-	if (s == 3) {
-		BozoSort(m[0], m[1], m[2]);
-		BozoSort(m[0], m[1], m[2], DESC);
+	if (size == 3) {
+		BozoSort(arr[0], arr[1], arr[2]);
+		BozoSort(arr[0], arr[1], arr[2], DESC);
 	}
 }
 
