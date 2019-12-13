@@ -10,15 +10,25 @@
 using namespace std;
 
 void task6() {
-	double a, b, c, x1, x2;
-	cout << "Введите коэффициенты" << endl;
+double a, b, c, D;
 	cin >> a >> b >> c;
-	double D = b * b - 4 * a*c;
-	if (a == 0 || b == 0) cout << "No solutions\n";
+	if (a == 0 && b == 0) cout << "x - любое" << endl;
+	else if (a == 0 && c == 0 || b == 0 && c == 0) cout << "x = " << 0 << endl;
+	else if (a == 0) cout << "x = " << -c/b << endl;
+	else if (b == 0) {
+		if (c > 0)	cout << "Нет корней" << endl;
+		else cout << "x1 = " << sqrt(-c/a) << endl << "x2 = " << -sqrt(-c/a) << endl;
+	}
+	else if (c == 0) cout << "x1 = " << 0 << endl << "x2 = " << -b/a << endl;
 	else {
-		x1 = (-b - sqrt(D)) / 2 * a;
-		x2 = (-b + sqrt(D)) / 2 * a;
-		cout << "x1=" << x1 << endl << "x2=" << x2 << endl;
+		D = b * b - 4 * a * c;
+		if (D < 0) {
+			cout << "Нет корней" << endl;
+		}
+		else {
+			cout << "x1 = " << (-b + sqrt(D)) / (2 * a) << endl;
+			cout << "x2 = " << (-b - sqrt(D)) / (2 * a) << endl;
+		}
 	}
 }
 
@@ -138,33 +148,26 @@ replay:
 }
 
 void task10() {
-	double a;
-	double n;
+	int deg;
+	double num;
 	cout << "Введите число и степень" << endl;
-	cin >> n >> a;
-	double res = n;
-	if (a == 0) {
-		cout << 1;
+	cin >> num >> deg;
+	double count = num;
+	if (deg == 0) 	cout << 1 << '\n';
+	if (deg == 1) cout << num << '\n';
+	if (deg == -1) cout << 1 / num << '\n';
+	if (deg > 1) {
+		for (int i = 1; i < deg; i++) 
+			num *= count;
+		cout << num << endl;
 	}
-	if (a > 0 && a > 1) {
-		for (int i = 1; i < a; i++) {
-			n *= res;
+	if (deg < -1) {
+		if (num == 0) cout << 0 << '\n';
+		else {
+			for (int i = -1; i > deg; i--)
+				num = 1 / (count*num);
+			cout << num << endl;
 		}
-		cout << n << endl;
-	}
-	if (a < -1) {
-		for (int i = -1; i > a; i--) {
-			n = 1 / (res*n);
-		}
-		cout << n << endl;
-	}
-	if (a > 0 && a < 1) {
-		n = exp(log(res)*a);
-		cout << n << endl;
-	}
-	if (a < 0 && a > -1) {
-		n = 1 / exp(log(res)*a);
-		cout << 1/n << endl;
 	}
 }
 
@@ -310,17 +313,22 @@ double BMI(double weight, double height) {
 	return weight / (height*height);
 }
 void printBMI(double BMI) {
-	if (BMI < 18.5)         cout << "Underweight\n";
-	else if (BMI < 25.0)    cout << "Normal\n";
-	else if (BMI < 30.0)    cout << "Overweight\n";
-	else                    cout << "Obesity\n";
+	if (BMI < 18.5)        
+		cout << "Underweight\n";
+	else if (BMI < 25.0)    
+		cout << "Normal\n";
+	else if (BMI < 30.0)    
+		cout << "Overweight\n";
+	else                    
+		cout << "Obesity\n";
 }
 //for task17
 
 void task17() {
-	double w, h;
-	cin >> w >> h;
-	printBMI(BMI(w, h / 100));
+	double weight, height;
+	cout << "Введите вес (в кг) и рост (в см)\n";
+	cin >> weight >> height;
+	printBMI(BMI(weight, height / 100));
 }
 
 void task18() {
