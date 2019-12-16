@@ -473,15 +473,18 @@ void task22() {
 
 bool check_palindrom(string word)
 {
-	int len = word.length();
-	for (int i = 0; i < len / 2; ++i)
-	{
-		if (word[i] != word[len - i - 1])
+	if (!word.empty()) {
+		int len = word.length();
+		for (int i = 0; i < len / 2; ++i)
 		{
-			return false;
+			if (word[i] != word[len - i - 1])
+			{
+				return false;
+			}
 		}
+		return true;
 	}
-	return true;
+	else return false;
 }
 void task23() {
 	string str;
