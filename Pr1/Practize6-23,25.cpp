@@ -3,7 +3,6 @@
 #include <cmath>
 #include <string>
 #include <ctime>
-#include <map>
 #include <vector>
 
 #define G -9.8
