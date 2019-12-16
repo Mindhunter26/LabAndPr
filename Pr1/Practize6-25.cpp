@@ -488,17 +488,17 @@ void task23() {
 	string fex;
 	cout << "Введите слово: ";
 	cin.ignore();
-	getline(cin,str);
+	getline(cin, str);
 
 	for (int i = 0; i < str.length(); i++) {
 		if (str[i] >= 65 && str[i] <= 90) {
 			str[i] = str[i] + 32;
 		}
-		if ((str[i] >= 48 && str[i]<=57) || (str[i]>=97 && str[i]<=122)) {
+		if ((str[i] >= 48 && str[i] <= 57) || (str[i] >= 97 && str[i] <= 122)) {
 			fex += str[i];
 		}
 	}
-	
+
 	if (check_palindrom(fex))
 		cout << "Палиндром\n";
 	else
