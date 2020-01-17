@@ -8,6 +8,52 @@
 #define G -9.8
 using namespace std;
 
+void task1(){
+ cout << "Результат вычисления выражения 2 + 2 * 2 = " << 2 + 2 * 2;
+} 
+
+void task2() {
+int a = 3, b = 3.14;
+double c = 3, d = 3.14;
+cout << a << endl << b << endl << c << endl << d << endl;
+}
+
+void task3() {
+	int a, b;
+	cout << "Enter a and b: ";
+	cin >> a >> b;
+	cout << a + b << endl << a - b << endl << a * b << endl << a / b << endl;
+	double c, d;
+	cout << "Enter c and d: ";
+	cin >> c >> d;
+	cout << c + d << endl << c - d << endl << c * d << endl << c / d << endl;
+	cout << a + d << endl << a - d << endl << a * d << endl << a / d << endl;
+	cout << c + b << endl << c - b << endl << c * b << endl << c / b << endl;
+}
+
+void task4() {
+double a, b;
+	cout << "Введите 2 числа: ";
+	cin >> a >> b;
+	double t;
+	t = a;
+	a = b;
+	b = t;
+	cout << a << b << endl;
+	b = b + a;
+	a = b - a;
+	b = b - a;
+	cout << a << b << endl;
+}
+
+void task5() {
+double x, x0, v0, t, a = -9.8;
+	cout << "Введите х0 v0 и t: " << endl;
+	cin >> x0 >> v0 >> t;
+	x = x0 + v0 * t + a * t*t / 2;
+	cout << x << endl;
+}
+
 void task6() {
 double a, b, c, D;
 	cin >> a >> b >> c;
