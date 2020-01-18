@@ -55,17 +55,27 @@ double x, x0, v0, t, a = -9.8;
 }
 
 void task6() {
-double a, b, c, D;
+double a, b, c;
 	cin >> a >> b >> c;
-	if (a == 0 && b == 0) cout << "x - любое" << endl;
-	else if (a == 0 && c == 0 || b == 0 && c == 0) cout << "x = " << 0 << endl;
-	else if (a == 0) cout << "x = " << -c/b << endl;
-	else if (b == 0) {
-		if (c > 0)	cout << "Нет корней" << endl;
-		else cout << "x1 = " << sqrt(-c/a) << endl << "x2 = " << -sqrt(-c/a) << endl;
+	if (a == 0 && b == 0) {
+		if (c == 0)	cout << "x - любое" << endl;
+		else cout << "Отсуттсвие решения" << endl;
 	}
-	else if (c == 0) cout << "x1 = " << 0 << endl << "x2 = " << -b/a << endl;
+	else if (a == 0 && c == 0 || b == 0 && c == 0) cout << "x = " << 0 << endl;
+	else if (a == 0) cout << "x = " << -c / b << endl;
+	else if (b == 0) {
+		if (c > 0) {
+			if (a > 0) cout << "Нет корней" << endl;
+			else if (a < 0)  cout << "x1 = " << sqrt(-c / a) << endl << "x2 = " << -sqrt(-c / a) << endl;
+		}
+		else if (c < 0) { 
+			if (a>0)	cout << "x1 = " << sqrt(-c / a) << endl << "x2 = " << -sqrt(-c / a) << endl;
+			else if (a < 0) cout << "Нет корней" << endl;
+		}
+	}
+	else if (c == 0) cout << "x1 = " << 0 << endl << "x2 = " << -b / a << endl;
 	else {
+		double D;
 		D = b * b - 4 * a * c;
 		if (D < 0) {
 			cout << "Нет корней" << endl;
