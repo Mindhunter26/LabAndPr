@@ -25,7 +25,19 @@
 2.Изучить базовые понятия относящийся к тестированию кода;<br>
 3.Научиться тестировать классы в среде разработки Qt Creator.</p>
 <h3 align = "center"><br>Ход работы<br></h3>
-Тестовый проект: <a href ="Test">Test</a><br>
-После реализации тест-кейсов я получил следующий вывод:
-<img src="Screenshots/Screen_1.png" align="center">
+Тестовый проект: <a href ="https://github.com/Mindhunter26/LabAndPr/tree/master/Lab9/TestCases">TestCases</a><br>
+После реализации тест-кейсов я получил следующий вывод:<br>
+<p align="center"><img src="Screenshots/Screen_1.png"></p>
 <p align="center"><i>Рис1. Результаты тестов</i></p>
+<p>Ошибка в тесте №5 возникает из-за реализации метода lockDoor() (Возвращает open(), а мы проверяем на close())</p>
+<p align="center"><img src="Screenshots/Screen_2.png"></p>
+<p align="center"><i>Рис2. Реализация lockDoor()</i></p>
+<p>Поэтому следует в 5 тесте ожидать вызов метода open() вместо close()</p>
+<p align="center"><img src="Screenshots/Screen_3.png"></p>
+<p align="center"><i>Рис3. Внесенные изменения</i></p>
+<p>После внесения изменений проверим правильность тестов</p>
+<p align="center"><img src="Screenshots/Screen_4.png"></p>
+<p align="center"><i>Рис4. Финальное тестирование</i></p>
+<p>Как можно увидеть все тесты проведены успешно</p>
+<h3><br>Вывод<br></h3>
+<p>Познакомился с Google Test и Google Mock Framework. Изучил базовые понятия относящийся к тестированию кода. Научился тестировать классы в среде разработки Qt Creator.</p>
