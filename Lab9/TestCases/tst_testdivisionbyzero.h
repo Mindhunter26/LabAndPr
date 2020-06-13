@@ -108,7 +108,7 @@ TEST_F(LockControllerFixture, checkLockController)
 TEST_F(LockControllerFixture, checkLockController2)
 {
     // Arrange
-    EXPECT_CALL(latch, open())
+    EXPECT_CALL(latch, close())
             .Times(1)
             .WillOnce(Return(DoorStatus::CLOSE));
     // Act
